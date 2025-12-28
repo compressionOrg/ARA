@@ -512,7 +512,7 @@ if __name__ == '__main__':
     parser.add_argument('--ratio_method', type=str, default='ars')
     parser.add_argument('--ars_path', type=str)
     parser.add_argument('--step', type=int, default=0, help='the step to run the compression')
-    parser.add_argument('--cuda_devices', type=str, default='7', help='the cuda devices to run the model')
+    parser.add_argument('--cuda_devices', type=str, default='0', help='the cuda devices to run the model')
     
 
     args = parser.parse_args()
@@ -536,8 +536,8 @@ if __name__ == '__main__':
             cali_white_data = get_calib_train_data(args.dataset, tokenizer, args.whitening_nsamples, seqlen=args.model_seq_len)
             profiling_mat = profle_svdllm_low_resource(args.model, model, cali_white_data, args.DEV)
             if args.save_path is not None:
-                torch.save(profiling_mat, args.save_path + "/" + args.model.split('/')[-1] + '_profiling_'+ args.dataset + '_' + str(args.whitening_nsamples)  + '_' + str(args.seed)+ '.pt')
-                # torch.save(profiling_mat, args.save_path + "/" + args.model.replace("/", "_").replace("-", "_") + '_profiling_'+ args.dataset + '_' + str(args.whitening_nsamples)  + '_' + str(args.seed)+ '.pt')
+                # torch.save(profiling_mat, args.save_path + "/" + args.model.split('/')[-1] + '_profiling_'+ args.dataset + '_' + str(args.whitening_nsamples)  + '_' + str(args.seed)+ '.pt')
+                torch.save(profiling_mat, args.save_path + "/" + args.model.replace("/", "_").replace("-", "_") + '_profiling_'+ args.dataset + '_' + str(args.whitening_nsamples)  + '_' + str(args.seed)+ '.pt')
             exit()
         else:
             profiling_mat = torch.load(args.profiling_mat_path)

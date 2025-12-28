@@ -237,8 +237,8 @@ def eval_zero_shot(model_name, model, tokenizer, task_list=["boolq","rte","hella
     return res['results']
 
 @torch.no_grad
-def zero_shot_eval(model_name, model, tokenizer, task_list=["boolq", "rte","hellaswag","winogrande", "arc_easy","arc_challenge", "openbookqa"]):
-    if torch.cuda.device_count() == 1:
+def zero_shot_eval(model_name, model, tokenizer, task_list=["boolq", "rte","hellaswag","winogrande", "arc_easy","arc_challenge", "openbookqa", "mathqa", "piqa"]):
+    if torch.cuda.device_count() == 1:                     
         accelerate=False
     else:
         accelerate=True

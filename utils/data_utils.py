@@ -91,8 +91,8 @@ def get_ptb(nsamples, seed, seqlen, tokenizer, dataset_cache_dir=None):
     return trainloader, testenc
 
 def get_c4(nsamples, seed, seqlen, tokenizer):
-    # traindata = load_dataset("json", data_files="utils/c4-train.json")['train']
-    traindata = load_dataset('json', data_files={'train': './allenai/c4/en/c4-train.00000-of-01024.json.gz'}, split='train')
+    traindata = load_dataset("json", data_files="utils/c4-train.json")['train']
+    # traindata = load_dataset('json', data_files={'train': 'utils/c4-train.00000-of-01024.json.gz'}, split='train')
     valdata = load_dataset("json", data_files="utils/c4-validation.json")['train']
 
     import random
@@ -244,7 +244,8 @@ def get_train_loader_for_causal_lm(dataset_name, tokenizer, seq_len=2048, batch_
         field_name = 'sentence'
     elif 'c4' in dataset_name:
         # 注意：此处假设C4数据集已在本地准备好
-        train_data = load_dataset('json', data_files={'train': './allenai/c4/en/c4-train.00000-of-01024.json.gz'}, split='train')
+        # train_data = load_dataset('json', data_files={'train': './allenai/c4/en/c4-train.00000-of-01024.json.gz'}, split='train')
+        train_data = load_dataset("json", data_files="utils/c4-train.json")['train']
         field_name = 'text'
     else:
         raise ValueError(f"Dataset '{dataset_name}' not supported in this example.")

@@ -143,7 +143,7 @@ weightwatcher==0.7.5.5
 word2number==1.1
 xxhash==3.5.0
 # Editable install with no version control (yacs==0.1.8)
--e /cluster/home/xulin/programs/SkipCat/yacs-master
+# -e /cluster/home/xulin/programs/SkipCat/yacs-master
 yarl==1.17.1
 zipp==3.21.0
 zstandard==0.23.0
